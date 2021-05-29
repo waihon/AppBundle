@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    Text("Hello, world!")
-      .padding()
+    if let fileURL = Bundle.main.url(forResource: "Hamlet", withExtension: "txt") {
+      if let fileContents = try? String(contentsOf: fileURL) {
+        return Text(fileContents).fontWeight(.light)
+      }
+    }
+    return Text("Hello, world!")
   }
 }
 
